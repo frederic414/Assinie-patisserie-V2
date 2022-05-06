@@ -22,4 +22,25 @@ class AdminController extends Controller
         });
         return view('admin.commande')->with('commandes', $commandes);
     }
+
+    public function commande_traiter($id)
+    {
+        $commande = Commande::find($id);
+
+        $commande->statut_commande = 1;
+        $commande->update();
+
+        return redirect('/admin/commandes');
+    }
+
+    public function commande_non_traiter($id)
+    {
+        $commande = Commande::find($id);
+
+        $commande->statut_commande = 0;
+        $commande->update();
+
+        return redirect('/admin/commandes');
+    }
+
 }

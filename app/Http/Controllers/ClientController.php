@@ -83,8 +83,15 @@ class ClientController extends Controller
     public function catalogue()
     {
         $categories = Category::get();
-        $produits = Product::where('status', 1)->get();
+        $produits = Product::where('status', 1)->paginate(10);
         return view('client.catalogue')->with('categories', $categories)->with('produits', $produits);
+  }
+
+    
+    public function produit($id)
+    {
+        $produit = Product::where('status', 1)->find($id);
+        return view('client.produit')->with('produit', $produit);
     }
 
     public function checkout()
@@ -166,6 +173,7 @@ class ClientController extends Controller
         $commande->date = $request->input('date');
         $commande->panier = serialize($cart);
         $commande->payer_id = $payement_id;
+        $commande->statut_commande =0;
 
         $commande->save();
 
@@ -180,12 +188,13 @@ class ClientController extends Controller
             return $commande;
         });
 
-        $email = Session::get('client')->email;
-        Mail::to($email)->send(new SendMail($commandes));
+        // $email = Session::get('client')->email;
+        // Mail::to($email)->send(new SendMail($commandes));
 
         return redirect('/panier')->with('status', 'Votre commande a été effectuée avec succès');
 
     }
+
 
     public function apropos()
     {

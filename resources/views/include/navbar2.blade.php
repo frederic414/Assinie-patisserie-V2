@@ -2,7 +2,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{URL::to('/admin')}}">
+            <a class="nav-link" href="{{URL::to('/asspr-admin')}}">
               <i class="ti-home menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -15,9 +15,9 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="{{URL::to('/ajoutercategorie')}}">Ajouter catégorie</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{URL::to('ajouterproduit')}}">Ajouter Produit</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{URL::to('/ajouterslider')}}">Ajouter un slider</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{URL::to('asspr-admin/ajoutercategorie')}}">Ajouter catégorie</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{URL::to('/asspr-admin/ajouterproduit')}}">Ajouter Produit</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{URL::to('/asspr-admin/ajouterslider')}}">Ajouter un slider</a></li>
                 <li class="nav-item"><a class="nav-link" href="wizard.html">Ajouter un challenge</a></li>
               </ul>
             </div>
@@ -30,11 +30,11 @@
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{URL::to('/categories')}}">Catégories</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{URL::to('/produits')}}">Produits</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{URL::to('/slider')}}">Slider</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{URL::to('/commandes')}}">Commandes</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{URL::to('/clients')}}">Clients</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{URL::to('/asspr-admin/categories')}}">Catégories</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{URL::to('/asspr-admin/produits')}}">Produits</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{URL::to('/asspr-admin/slider')}}">Slider</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{URL::to('/asspr-admin/commandes')}}">Commandes</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{URL::to('/asspr-admin/clients')}}">Clients</a></li>
               </ul>
             </div>
           </li>

@@ -19,7 +19,7 @@ class PdfController extends Controller
 
             return $pdf->stream();
         }
-        catch(\ Exception $e){
+        catch(Exception $e){
             return redirect('/commandes')->with('error', $e->getMessage());
         }
     }
