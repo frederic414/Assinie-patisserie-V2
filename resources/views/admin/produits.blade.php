@@ -48,12 +48,12 @@
                           @endif
                         </td>
                         <td>
-                          <button class="btn btn-outline-primary" onclick="window.location = '{{url('/edit_produit/'.$produit->id)}}'">Editer</button>
-                          <button class="btn btn-outline-danger"><a href="{{url('/supprimerproduit/'.$produit->id)}}" id="delete">Supprimer</a></button>
+                          <button class="btn btn-outline-primary" onclick="window.location = '{{url('/asspr-admin/edit_produit/'.$produit->id)}}'">Editer</button>
+                          <button class="btn btn-outline-danger"><a href="{{url('/asspr-admin/supprimerproduit/'.$produit->id)}}" id="delete">Supprimer</a></button>
                           @if ($produit->status==1)
-                            <button class="btn btn-outline-warning" onclick="window.location = '{{url('/desactiver_produit/'.$produit->id)}}'">Desactiver</button>
+                            <button class="btn btn-outline-warning" onclick="window.location = '{{url('/asspr-admin/desactiver_produit/'.$produit->id)}}'">Desactiver</button>
                           @else
-                              <button class="btn btn-outline-success" onclick="window.location = '{{url('/activer_produit/'.$produit->id)}}'">Activer</button>
+                              <button class="btn btn-outline-success" onclick="window.location = '{{url('/asspr-admin/activer_produit/'.$produit->id)}}'">Activer</button>
                           @endif
                         </td>
                     </tr>
