@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
+@extends('layouts.app1')
+
+@section('contenu')
 <head>
 	<title>Login</title>
 	<meta charset="UTF-8">
@@ -27,21 +28,21 @@
 	<link rel="stylesheet" type="text/css" href="frontend/css/main.css">
 <!--===============================================================================================-->
 </head>
-<body>
+
 	
 	<div class="limiter">
-		 <div class="container-login100" style="background-image: url('frontend/images/bg-01.jpg');">
-			<div class="wrap-login100">
+		 <div class="container-login100">
+			<div class="wrap-login100" style="background-image: url('frontend/images/img11.jpg');">
 				<form action="{{url('/acceder_compte')}}" method="POST" class="login100-form validate-form">
 					<a href="{{URL::to('/')}}">
 						{{ csrf_field() }}
-						<span class="login100-form-logo">
+						<span class="login100-form-logo" style="background-image: url('frontend/images/1Logo Assinie.png');">
 							<i class="zmdi zmdi-landscape"></i>
 						</span>
 					</a>
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Log in
+						SE CONNECTER
 					</span>
 
 					@if (Session::has('status'))
@@ -51,12 +52,12 @@
 					@endif
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="email" placeholder="Username">
+						<input class="input100" type="text" name="email" placeholder="Adresse-Email">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="password" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Mot de Passe">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
@@ -74,7 +75,7 @@
 					</div>
 
 					<div class="text-center p-t-90">
-						<a class="txt1" href="{{url('/client-singup')}}">
+						<a class="txt3" href="{{url('/client-singup')}}">
 							Avez-vous un compte ? 	S'enregistré
 						</a>
 					</div>
@@ -102,6 +103,4 @@
 	<script src="frontend/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="frontend/js/main1.js"></script>
-
-</body>
-</html>
+@endsection

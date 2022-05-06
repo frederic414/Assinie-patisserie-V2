@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Client;
 use App\Models\Commande;
+use App\Models\Commentaire;
 use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Cart;
@@ -113,11 +114,20 @@ class ClientController extends Controller
     {
         $this->validate($request, [
             'email' => 'required|email|unique:clients',
+            'nom' => 'required|max:20|alpha',
+            'prenom' => 'required|max:20|alpha',
+            'contact' => 'required|integer',
+            'nomutilisateur' => 'required',
             'password' => 'required|min:4'
         ]);
         $client = new Client();
         $client->email = $request->input(('email'));
+        $client->nom = $request->input(('nom'));
+        $client->prenom = $request->input(('prenom'));
+        $client->nom_utilisateur = $request->input(('nomutilisateur'));
+        $client->contact = $request->input(('contact'));
         $client->password = bcrypt($request->input(('password')));
+        $client->is_admin = 0;
 
         $client->save();
         return back()->with('status', 'Votre compte à été creer avec succès !!!');
@@ -195,5 +205,30 @@ class ClientController extends Controller
     public function Contactez_nous()
     {
         return view('client.contactez-nous');
+    }
+
+    // fonction pour permettre aux clients de commenter
+    public function commenter(Request $request)
+    {
+        $this->validate($request, [
+            'commentaire' => 'required:commentaires',
+            'nom' => 'required:commentaires',
+            'prenom' => 'required:commentaires' 
+            
+        ]);
+        $commentaire = new Commentaire();
+        $client = Client::find(1);
+        $produit = Product::find(1);
+        $commentaire->commentaire = $request->input(('commentaire'));
+        $commentaire->commenter_id = $client->id;
+        $commentaire->email_client = $client->email;
+        $commentaire->product_id = $produit->id;
+        $commentaire->nom_produit = $produit->product_name;
+        $nom_client = $request->input(('nom'));
+        $prenom_client = $request->input(('prenom'));
+        $identite_client = $nom_client." ".$prenom_client;
+        $commentaire->nomclient = $identite_client; 
+        $commentaire->save();
+        return back()->with('status', 'Votre avis a été enrégistré! Merci pour la confiance');
     }
 }

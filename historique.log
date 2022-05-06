@@ -1,0 +1,45 @@
+ git clone git@github.com:frederic414/Assinie-patisserie-V2.git
+ 
+/*CONFIGURATION DE BD*/
+
+php artisan migrate
+php artisan serve.
+pages accueil, panier, OK
+pages connexion, apropos, NON 
+02/05/2022
+A 01 h.
+-arrangement interface client-login et client-signup
+-Enregistrement de deux sliders dont les images sont pas visibles a l'affichage.
+
+git commit -m "arrangement des pages login et signup"
+git push origin michaelroger
+
+--Changement du provider dans Config/aut.php pour qu'il utilise le model client.
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Client::class,
+        ],
+--Changement de controlleur pour la fonction acceder_compte (AdminController)
+--Route group pour les routes dediees a l'administrateur.
+
+$ php artisan migrate
+Migrating: 2022_03_27_102824_add_column_bolean_is_admin_to_client_table
+Migrated:  2022_03_27_102824_add_column_bolean_is_admin_to_client_table (474.69
+$ php artisan make:migration add_fields_to_clients_table --table=clients
+Created Migration: 2022_05_03_134557_add_fields_to_clients_table
+
+--Modification du model Client
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+//use Illuminate\Foundation\Auth\Client as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Client extends Model implements Authenticatable
+{
+    use AuthenticableTrait, HasFactory, Notifiable;
+}
