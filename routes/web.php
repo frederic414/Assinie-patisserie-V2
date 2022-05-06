@@ -41,7 +41,7 @@ Route::post('/commenter', [ClientController::class, 'commenter']);
 
 
 Route::group(['middleware' => 'auth'], function () {
-Route::get('/asspr-admin', [AdminController::class, 'dashboard']);
+Route::get('/asspr-admin', [AdminController::class, 'dashboard'])->name('asspr-admin');
 
 Route::prefix('asspr-admin')->group(function(){
     
