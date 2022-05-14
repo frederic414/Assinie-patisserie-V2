@@ -22,6 +22,7 @@ class ProduitController extends Controller
             'product_name'=>'required|unique:products',
             'product_price' => 'required',
             'product_category' => 'required',
+            'product_description' => 'required',
             'product_image'=>'image|nullable|max:4000']);
 
         if($request->hasFile('product_image'))
@@ -44,6 +45,7 @@ class ProduitController extends Controller
 
         $product->product_name=$request->input('product_name');
         $product->product_price = $request->input('product_price');
+        $product->description = $request->input('product_description');
         $product->product_category = $request->input('product_category');
         $product->product_image = $fileNameToStore;
         $product->status =1;

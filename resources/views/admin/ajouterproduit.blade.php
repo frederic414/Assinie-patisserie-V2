@@ -45,6 +45,10 @@
                             {!!Form::select('product_category',$categories, null, ['placeholder' => 'selectionner la categorie', 'class' => 'form-control'])!!}
                         </div>
                         <div class="form-group">
+                            {!!Form::label('', 'Description du produit', ['for' =>'cname'])!!}
+                            {!!Form::text('product_description', '', ['id' => 'cname', 'class' => 'form-control'])!!}
+                        </div>
+                        <div class="form-group">
                             {!!Form::label('', 'image', ['for' =>'cname'])!!}
                             {!!Form::File('product_image',['id' => 'cname', 'class' => 'form-control'])!!}
                         </div>

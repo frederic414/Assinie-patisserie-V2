@@ -37,6 +37,8 @@ Route::post('/creer_compte', [ClientController::class, 'creer_compte']);
 Route::post('/acceder_compte', [ClientController::class, 'acceder_compte']);
 Route::get('/client-logout', [ClientController::class, 'client_logout']);
 Route::post('/confirmation', [ClientController::class, 'confirmation']);
+Route::post('/commenter', [ClientController::class, 'commenter']);
+
 
 Route::get('/asspr-admin', [AdminController::class, 'dashboard']);
 

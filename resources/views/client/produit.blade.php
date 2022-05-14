@@ -124,7 +124,7 @@
         </div>
     </div>
     </div>
-@if (count($produit->recommandations) > 0)
+{{-- @if (count($produit->recommandations) > 0)
     <div class="container">
         <hr>
         <h2 class="text-center"> <li class="fa fa-eye"></li> Voir aussi</h2>       
@@ -143,9 +143,70 @@
                         </div> 
                     @endif
                 @endforeach 
-            </div>     
+            </div>  
+                    
     </div>
-@endif 
+@endif  --}}
+
+{{-- <div class="comment_p">
+                        @if (Session::has('status'))
+                            <div class="alert alert-success">
+                                {{Session::get('status')}}
+                            </div>
+                        @endif
+                
+                        @if (count($errors)>0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>
+                                        {{$error}}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    
+                        @endif --}}
+                
+                    {{-- @guest --}}
+                    {!!Form::open(['action' => 'App\Http\Controllers\ClientController@commenter', 'method' => 'POST', 'class' => 'cmxform', 'id' => 'commentForm', 'enctype' => 'multipart/form-data'])!!}
+                    {{ csrf_field() }}
+                    <h6>VOTRE COMMENTAIRE ICI</h6>
+                    <span>
+                    {!!Form::label('Nom')!!}
+                    {!!Form::text('nom')!!}
+                    </span>
+                    <span>
+                    {!!Form::label('Prenom')!!}
+                    {!!Form::text('prenom')!!}
+                    </span>
+                    <span>
+                    {!!Form::label('email')!!}
+                    {!!Form::text('email')!!}
+                    </span>
+                    <span>
+                    {!!Form::label('votre avis')!!}
+                    {!!Form::textarea('commentaire')!!}
+                    </span>
+                    <span class="sumitbtn">
+                        <button type="submit" class="boutton1">soumettre</button>
+                    </span>
+                    {!!Form::close()!!}
+                    {{-- @endguest --}}
+                    {{-- @auth --}}
+                    {{-- {!!Form::open(['action' => 'App\Http\Controllers\ClientController@commenter', 'method' => 'POST', 'class' => 'cmxform', 'id' => 'commentForm', 'enctype' => 'multipart/form-data'])!!}
+                    {{ csrf_field() }}
+                    <h6>VOTRE COMMENTAIRE ICI</h6>
+                    <span>
+                    {!!Form::label('votre avis')!!}
+                    {!!Form::textarea('commentaire')!!}
+                    </span>
+                    <span class="sumitbtn">
+                        <button type="submit" class="boutton1">soumettre</button>
+                    </span>
+                    {!!Form::close()!!} --}}
+                    {{-- @endauth     --}}
+                {{-- </div> --}}
 
 @endsection
 
