@@ -243,8 +243,82 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-12 grid-margin">
+            <h2>Exemple de graphiques avec laravel </h2>
+          <div class="graphique">
+            <div class="graphligne">
+            <div class ="graphe1">
+              <canvas id="myChart"></canvas>
+            </div>
+            <div class ="graphe2">
+              <canvas id="myBarChart"></canvas>
+            </div>
+          </div>
+          <div class="graphligne">
+            <div class="linechart">
+              <canvas id="linechart"></canvas>
+            </div>
+          </div>
+          </div>
+          </div>
+        </div>
 @endsection
 
 @section('scripts')
+<script>
+  var _ydata = JSON.parse('{!! json_encode($hours) !!}');
+  var _xdata = JSON.parse('{!! json_encode($hourCount) !!}');
+  // 1. Declaration de la Liste de labels qui va constituer l'axe des abscisses
+  const labels = [
+            'Janvier',
+            'Février',
+            'Mars',
+            'Avril',
+            'Mai',
+            'Juin',
+            ];
+          //2. Declaration des données
+          const data = {
+            labels: labels,
+            datasets: [{
+              label:'Mon graphique Lineaire',
+              borderColor: 'rgb(75, 192, 192)',
+              // Axe des ordonnées
+              data: [0,10,5,2,20,30,45],
+            }]
+          };
+
+          // 3. Configuration
+          const config = {
+            type:'line',
+            data: data,
+            options: {
+              animations: {
+                tension: {
+                  duration: 1000,
+                  easing: 'linear',
+                  from: 1,
+                  to: 0,
+                loop: true
+                }
+              },
+              scales: {
+                y: { // defining min and max so hiding the dataset does not change scale range
+                  min: 0,
+                  max: 100
+                }
+              }
+            }
+          };
+          
+          // 4. Mise en place du graphique avec le canvas
+          var ctx = document.getElementById('linechart');
+          var mongraphique = new Chart(ctx,
+            config,    
+          );
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{asset('frontend/js/graphe.js')}}"></script>
   <script src="backend/js/dashboard.js"></script>
 @endsection
