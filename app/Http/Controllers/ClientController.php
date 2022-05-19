@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -22,6 +23,22 @@ class ClientController extends Controller
         $sliders = Slider::where('slider_status', 1)->get();
         $produits = Product::where('status', 1)->get();
         return view('client.home')->with('sliders', $sliders)->with('produits', $produits);
+    }
+
+    public function redirection()
+    {
+        $role=Auth::user()->role;
+
+        if($role=='1')
+        {
+            return redirect('/asspr-admin');
+        }
+
+        if($role=='0')
+        {
+            Session::put('user',$role);
+            return redirect('/catalogue');
+        }
     }
 
     public function ajouter_au_panier($id)
@@ -96,8 +113,8 @@ class ClientController extends Controller
 
     public function checkout()
     {
-        if (!Session::has('client')) {
-            return view('client.client-login');
+        if (!Session::has('user')) {
+            return view('auth.login');
         }
         if (!Session::has('cart')) {
             return view('client.panier');
@@ -153,7 +170,7 @@ class ClientController extends Controller
 
     public function client_logout()
     {
-        Session::forget('client');
+        Session::forget('user');
         return back();
     }
 

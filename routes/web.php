@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 // Route Fred
 Route::get('/', [ClientController::class, 'home']);
+Route::get('/redirects', [ClientController::class, 'redirection']);
 Route::get('/catalogue', [ClientController::class, 'catalogue']);
 Route::get('/catalogue/produit/{id}', [ClientController::class, 'produit']);
 Route::get('/panier', [ClientController::class, 'panier']);
@@ -74,4 +75,14 @@ Route::prefix('asspr-admin')->group(function(){
     Route::get('/commande_pdf/{id}', [PdfController::class, 'voir_pdf']);
     Route::get('/commande_traiter/{id}', [AdminController::class, 'commande_traiter']);
     Route::get('/commande_non_traiter/{id}', [AdminController::class, 'commande_non_traiter']);
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });

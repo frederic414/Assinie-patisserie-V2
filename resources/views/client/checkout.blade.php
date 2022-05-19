@@ -6,7 +6,7 @@
 	<div class="container">
 	  <div class="row no-gutters slider-text align-items-center justify-content-center">
 		<div class="col-md-9 ftco-animate text-center">
-			<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Checkout</span></p>
+			<p class="breadcrumbs"><span class="mr-2"><a href="">Home</a></span> <span>Checkout</span></p>
 		  <h1 class="mb-0 bread">Checkout</h1>
 		</div>
 	  </div>
@@ -24,7 +24,7 @@
 					  <div class="col-md-12">
 						  <div class="form-group">
 							  <label for="firstname">Nom et prenom</label>
-						  <input type="text" class="form-control" name="name">
+						  <input type="text" class="form-control" name="name" placeholder="{{Auth::user()->name}}">
 						  </div>
 					  </div>
 					  <div class="col-md-12">
@@ -36,7 +36,7 @@
 					  <div class="col-md-12">
 						  <div class="form-group">
 							  <label for="lastname">Numero de telephone</label>
-						  <input type="text" class="form-control" id="card-name" name="telephone">
+						  <input type="tel" class="form-control" id="card-name" name="telephone" value="{{Auth::user()->telephone}}">
 						  </div>
 					  </div>
 					  
