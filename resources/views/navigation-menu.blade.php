@@ -7,7 +7,7 @@
                 <div class="shrink-0 flex items-center">
                     {{-- <img src="{{asset('backend/images/logo2.png')}}" alt="profile"/> --}}
 
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('/') }}">
                         {{-- <x-jet-application-mark class="block h-9 w-auto" /> --}}
                         <img src="{{asset('backend/images/logo2.png')}}" alt="profile" class="block h-12 w-auto"/>
                     </a>

@@ -31,10 +31,10 @@ class ClientController extends Controller
 
         if($role=='1')
         {
+            Session::put('user',$role);
             return redirect('/asspr-admin');
         }
-
-        if($role=='0')
+        else
         {
             Session::put('user',$role);
             return redirect('/catalogue');
@@ -123,54 +123,55 @@ class ClientController extends Controller
         return view('client.checkout');
     }
 
-    public function client_login()
-    {
-        return view('client.client-login');
-    }
+    // public function client_login()
+    // {
+    //     return view('client.client-login');
+    // }
 
-    public function client_singup()
-    {
-        return view('client.client-singup');
-    }
+    // public function client_singup()
+    // {
+    //     return view('client.client-singup');
+    // }
 
-    public function creer_compte(Request $request)
-    {
-        $this->validate($request, [
-            'email' => 'required|email|unique:clients',
-            'password' => 'required|min:4'
-        ]);
-        $client = new Client();
-        $client->email = $request->input(('email'));
-        $client->password = bcrypt($request->input(('password')));
+    // public function creer_compte(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'email' => 'required|email|unique:clients',
+    //         'password' => 'required|min:4'
+    //     ]);
+    //     $client = new Client();
+    //     $client->email = $request->input(('email'));
+    //     $client->password = bcrypt($request->input(('password')));
 
-        $client->save();
-        return back()->with('status', 'Votre compte à été creer avec succès !!!');
-    }
+    //     $client->save();
+    //     return back()->with('status', 'Votre compte à été creer avec succès !!!');
+    // }
 
-    public function acceder_compte(Request $request)
-    {
-        $this->validate($request, [
-            'email' => 'required',
-            'password' => 'required'
-        ]);
-        $client = Client::where('email', $request->input('email'))->first();
+    // public function acceder_compte(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'email' => 'required',
+    //         'password' => 'required'
+    //     ]);
+    //     $client = Client::where('email', $request->input('email'))->first();
 
-        if ($client) {
-            if (Hash::check($request->input('password'), $client->password)) {
-                Session::put('client', $client);
-                return redirect('/catalogue');
-            } else {
-                return back()->with('status', 'Mot de passe ou email incorrecte');
-            }
-        } else {
-            return back()->with('status', "Cet compte n'existe pas, veuillez creer un compte SVP!!!");
-        }
-    }
+    //     if ($client) {
+    //         if (Hash::check($request->input('password'), $client->password)) {
+    //             Session::put('client', $client);
+    //             return redirect('/catalogue');
+    //         } else {
+    //             return back()->with('status', 'Mot de passe ou email incorrecte');
+    //         }
+    //     } else {
+    //         return back()->with('status', "Cet compte n'existe pas, veuillez creer un compte SVP!!!");
+    //     }
+    // }
 
 
     public function client_logout()
     {
         Session::forget('user');
+        Auth::logout();
         return back();
     }
 
@@ -205,7 +206,7 @@ class ClientController extends Controller
             return $commande;
         });
 
-        // $email = Session::get('client')->email;
+        // $email = Session::get('user')->email;
         // Mail::to($email)->send(new SendMail($commandes));
 
         return redirect('/panier')->with('status', 'Votre commande a été effectuée avec succès');

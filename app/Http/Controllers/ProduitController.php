@@ -50,7 +50,7 @@ class ProduitController extends Controller
 
         $product->save();
 
-        return redirect('/admin/ajouterproduit')->with('status', 'Le produit ' . $product->product_name. ' a été inserer avec succès');
+        return redirect('/asspr-admin/ajouterproduit')->with('status', 'Le produit ' . $product->product_name. ' a été inserer avec succès');
     }
 
     public function produits()
@@ -113,7 +113,7 @@ class ProduitController extends Controller
 
         $product->update();
 
-        return redirect('/admin/produits')->with('status', 'Le produit ' . $product->product_name. ' a bien été mis à jour');
+        return redirect('/asspr-admin/produits')->with('status', 'Le produit ' . $product->product_name. ' a bien été mis à jour');
 
     }
 
@@ -127,7 +127,7 @@ class ProduitController extends Controller
         }
         $produit->delete();
 
-        return redirect('/admin/produits')->with('status', 'Le produit ' . $produit->product_name. ' a bien été supprimer avec succes');
+        return redirect('/asspr-admin/produits')->with('status', 'Le produit ' . $produit->product_name. ' a bien été supprimer avec succes');
 
     }
 
@@ -138,7 +138,7 @@ class ProduitController extends Controller
 
         $produit->update();
 
-        return redirect('/admin/produits')->with('status', 'Le produit ' . $produit->product_name. ' a été activer avec succes');
+        return redirect('/asspr-admin/produits')->with('status', 'Le produit ' . $produit->product_name. ' a été activer avec succes');
 
     }
 
@@ -149,7 +149,7 @@ class ProduitController extends Controller
 
         $produit->update();
 
-        return redirect('/admin/produits')->with('status', 'Le produit ' . $produit->product_name. ' a été desactiver avec succes');
+        return redirect('/asspr-admin/produits')->with('status', 'Le produit ' . $produit->product_name. ' a été desactiver avec succes');
 
     }
 }

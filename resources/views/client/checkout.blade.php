@@ -24,7 +24,7 @@
 					  <div class="col-md-12">
 						  <div class="form-group">
 							  <label for="firstname">Nom et prenom</label>
-						  <input type="text" class="form-control" name="name" placeholder="{{Auth::user()->name}}">
+						  <input type="text" class="form-control" name="name" value="{{Auth::user()->name}}">
 						  </div>
 					  </div>
 					  <div class="col-md-12">

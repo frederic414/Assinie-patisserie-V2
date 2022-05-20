@@ -92,12 +92,12 @@
 					  <div class="col-md-6">
 						  <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(frontend/images/img1.jpg);">
 							  <div class="text px-3 py-1">
-								  <h2 class="mb-0"><a href="#">Gateaux</a></h2>
+								  <h2 class="mb-0"><a href="{{URL::to('/catalogue')}}">Gateaux</a></h2>
 							  </div>
 						  </div>
 						  <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(frontend/images/img2.jpg);">
 							  <div class="text px-3 py-1">
-								  <h2 class="mb-0"><a href="#">Genoise</a></h2>
+								  <h2 class="mb-0"><a href="{{URL::to('/catalogue')}}">Genoise</a></h2>
 							  </div>
 						  </div>
 					  </div>
@@ -107,12 +107,12 @@
 			  <div class="col-md-4">
 				  <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(frontend/images/img3.jpg);">
 					  <div class="text px-3 py-1">
-						  <h2 class="mb-0"><a href="#">Restaurations</a></h2>
+						  <h2 class="mb-0"><a href="{{URL::to('/catalogue')}}">Restaurations</a></h2>
 					  </div>		
 				  </div>
 				  <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(frontend/images/product-8.jpg);">
 					  <div class="text px-3 py-1">
-						  <h2 class="mb-0"><a href="#">Jus Naturel</a></h2>
+						  <h2 class="mb-0"><a href="{{URL::to('/catalogue')}}">Jus Naturel</a></h2>
 					  </div>
 				  </div>
 			  </div>
@@ -136,7 +136,7 @@
 		@foreach ($produits as $produit)
 			<div class="col-md-6 col-lg-4 ftco-animate">
 				<div class="product">
-					<a href="#" class="img-prod"><img class="img-fluid" src="storage/product_images/{{$produit->product_image}}" alt="Colorlib Template">
+					<a href="/catalogue/produit/{{$produit->id}}"  class="img-prod"><img class="img-fluid" src="storage/product_images/{{$produit->product_image}}" alt="Colorlib Template">
 						<div class="overlay"></div>
 					</a>
 					<div class="text py-3 pb-4 px-3 text-center">
@@ -148,13 +148,13 @@
 						</div>
 						<div class="bottom-area d-flex px-3">
 							<div class="m-auto d-flex">
-								<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+								<a href="/catalogue/produit/{{$produit->id}}"  class="add-to-cart d-flex justify-content-center align-items-center text-center">
 									<span><i class="ion-ios-menu"></i></span>
 								</a>
-								<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+								<a href="/ajouter-au-panier/{{$produit->id}}"  class="buy-now d-flex justify-content-center align-items-center mx-1">
 									<span><i class="ion-ios-cart"></i></span>
 								</a>
-								<a href="#" class="heart d-flex justify-content-center align-items-center ">
+								<a href="/catalogue/produit/{{$produit->id}}"  class="heart d-flex justify-content-center align-items-center ">
 									<span><i class="ion-ios-heart"></i></span>
 								</a>
 							</div>

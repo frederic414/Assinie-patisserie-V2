@@ -30,7 +30,7 @@ class AdminController extends Controller
         $commande->statut_commande = 1;
         $commande->update();
 
-        return redirect('/admin/commandes');
+        return redirect('/asspr-admin/commandes');
     }
 
     public function commande_non_traiter($id)
@@ -40,7 +40,7 @@ class AdminController extends Controller
         $commande->statut_commande = 0;
         $commande->update();
 
-        return redirect('/admin/commandes');
+        return redirect('/asspr-admin/commandes');
     }
 
 }

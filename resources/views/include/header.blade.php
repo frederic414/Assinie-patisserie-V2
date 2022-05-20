@@ -66,13 +66,13 @@
                     </li>
                 @endif
 			  @if (Session::has('user'))
-			  	<li class="nav-item"><a  href="{{ route('logout') }}" class="nav-link" ><span class="fa 	fa-user"></span>Deconnexion</a></li>	  
+			  	<li class="nav-item"><a  href="{{ URL::to('/logout') }}"  class="nav-link" >Deconnexion</a></li>	  
 			  @else
 				<li class="nav-item"><a href="{{URL::to('/login')}}" class="nav-link"><span class="fa fa-user"></span>Connexion</a></li>
 
 			  @endif
 			  <li class="nav-item "><a href="{{URL::to('/apropos')}}" class="nav-link">A propos</a></li>
-			  <li class="nav-item "><a href="{{URL::to('/contactez-nous')}}" class="nav-link">Contactez-nous</a></li>
+			  <li class="nav-item "><a href="{{URL::to('/contactez-nous')}}" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
 	    </div>
